@@ -320,7 +320,7 @@ Heli.Audio = function(game) {
         playing        = [];
 
     function load(name, path, cb) {
-
+        
         var f = files[name] = document.createElement("audio");
 
         progressEvents[name] = function(event) { progress(event, name, cb); };
@@ -335,22 +335,22 @@ Heli.Audio = function(game) {
     function progress(event, name, callback) {
         if (event.loaded === event.total && typeof callback === "function") {
             callback();
-            files[name].removeEventListener("canplaythrough",
-                                            progressEvents[name], true);
+            //files[name].removeEventListener("canplaythrough",
+             //                               progressEvents[name], true);
         }
     }
 
     function disableSound() {
         for (var i = 0; i < playing.length; i++) {
-            files[playing[i]].pause();
-            files[playing[i]].currentTime = 0;
+            //files[playing[i]].pause();
+            //files[playing[i]].currentTime = 0;
         }
         playing = [];
     }
 
     function stop(file) {
-        files[file].pause();
-        files[file].currentTime = 0;
+        //files[file].pause();
+       // files[file].currentTime = 0;
     }
 
     function ended(name) {
@@ -373,20 +373,20 @@ Heli.Audio = function(game) {
         if (!game.soundDisabled()) {
             endEvents[name] = function() { ended(name); };
             playing.push(name);
-            files[name].addEventListener("ended", endEvents[name], true);
-            files[name].play();
+            //files[name].addEventListener("ended", endEvents[name], true);
+            //files[name].play();
         }
     }
 
     function pause() {
         for (var i = 0; i < playing.length; i++) {
-            files[playing[i]].pause();
+            //files[playing[i]].pause();
         }
     }
 
     function resume() {
         for (var i = 0; i < playing.length; i++) {
-            files[playing[i]].play();
+           // files[playing[i]].play();
         }
     }
 
@@ -596,12 +596,12 @@ var HELICOPTER = (function() {
 
     function load(arr, loaded) {
 
-        if (arr.length === 0) {
+        //if (arr.length === 0) {
             loaded();
-        } else {
-            var x = arr.pop();
-            audio.load(x[0], x[1], function() { load(arr, loaded); });
-        }
+        //} else {
+            //var x = arr.pop();
+            //audio.load(x[0], x[1], function() { load(arr, loaded); });
+        //}
     }
 
     function startScreen() {
